@@ -41,8 +41,8 @@ Take screenshots of the following views and save them in your `screenshots` fold
 ---
 
 ## Links
-- GitHub Repository: <YOUR_GITHUB_LINK>  
-- Live Website: <YOUR_NETLIFY_LINK>
+- GitHub Repository: <[text](https://github.com/Saturoleon/Freshlane-poe)>  
+- Live Website: <[text](https://saturoleon.github.io/Freshlane-poe/)>
 
 ---
 
