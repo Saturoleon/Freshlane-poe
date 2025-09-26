@@ -33,7 +33,7 @@ Freshlane is a youth-focused streetwear brand website showcasing hoodies and car
 Take screenshots of the following views and save them in your `screenshots` folder:
 
 ### Desktop View
-![Desktop View](screenshots/homepage .png)
+![Desktop View](screenshots/homepage.png)
 
 ### Mobile View
 ![Mobile View](screenshots/hamburger.png)
