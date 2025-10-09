@@ -1,234 +1,275 @@
-/* === Freshlane Website CSS - Fixed === */
+/* =======================================
+   Freshlane Website CSS
+   Upgraded for Modern & Premium Look
+   Author: Leon
+======================================= */
 
-/* === Basic Reset === */
+/* ----- Global ----- */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Arial', sans-serif;
+    font-family: 'Roboto', sans-serif;
 }
 
-/* === Body === */
 body {
+    background-color: #fefefe;
+    color: #222;
     line-height: 1.6;
-    background-color: #f2f7f9;
-    color: #0d1f2d;
+    transition: background-color 0.3s, color 0.3s;
 }
 
-/* === Header === */
+/* ----- Header ----- */
 header {
-    background-color: #00bcd4;
-    color: #ffe066;
-    padding: 20px 0;
-    text-align: center;
-    position: relative;
+    background-color: #000;
+    color: #fff;
+    padding: 15px 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.3);
 }
 
 header h1 {
-    font-size: 2.5rem;
-    margin-bottom: 10px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 28px;
+    margin-left: 15px;
+    display: inline-block;
 }
 
-/* === Navigation === */
 nav ul {
     list-style: none;
     display: flex;
-    justify-content: center;
     gap: 25px;
-    flex-wrap: wrap;
+    justify-content: flex-end;
+    margin-right: 15px;
 }
 
 nav ul li a {
     color: #fff;
     text-decoration: none;
     font-weight: bold;
-    font-size: 1rem;
-    transition: color 0.3s;
+    transition: color 0.3s, transform 0.3s;
 }
 
 nav ul li a:hover,
 nav ul li a.active {
-    color: #ff6f61;
-    text-decoration: underline;
+    color: #ff6600;
+    transform: scale(1.1);
 }
 
-/* === Hamburger === */
 .hamburger {
     display: none;
-    font-size: 2rem;
     cursor: pointer;
+    font-size: 28px;
     color: #fff;
     position: absolute;
-    top: 25px;
-    right: 20px;
+    top: 15px;
+    right: 15px;
 }
 
-/* === Main Content === */
-main {
-    padding: 30px 20px;
-    max-width: 1200px;
-    margin: auto;
-}
-
-main h2 {
-    text-align: center;
-    font-size: 2rem;
-    margin-bottom: 20px;
-    color: #00bcd4;
-}
-
-main p {
-    text-align: justify;
-    margin-bottom: 20px;
-    font-size: 1.1rem;
-}
-
-/* === Hero Section === */
+/* ----- Hero Section ----- */
 #hero {
-    background-color: #ffe066;
+    background: linear-gradient(to right, #ffe066, #ff6600);
     text-align: center;
-    padding: 60px 20px;
+    padding: 80px 20px;
     border-radius: 15px;
-    margin-bottom: 40px;
+    margin-bottom: 50px;
+    position: relative;
+    overflow: hidden;
+}
+
+#hero h2 {
+    font-size: 3rem;
+    color: #000;
+    margin-bottom: 15px;
+    animation: fadeInDown 1s ease forwards;
+}
+
+#hero p {
+    font-size: 1.2rem;
+    color: #222;
+    max-width: 600px;
+    margin: 10px auto 20px auto;
+    animation: fadeInUp 1s ease forwards 0.5s;
 }
 
 #hero img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 12px;
+    max-width: 300px;
+    border-radius: 15px;
+    animation: fadeIn 1s ease forwards 1s;
 }
 
-/* === Product Grid === */
+/* ----- Animations ----- */
+@keyframes fadeIn {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+
+@keyframes fadeInDown {
+    from {opacity: 0; transform: translateY(-30px);}
+    to {opacity: 1; transform: translateY(0);}
+}
+
+@keyframes fadeInUp {
+    from {opacity: 0; transform: translateY(30px);}
+    to {opacity: 1; transform: translateY(0);}
+}
+
+/* ----- Product Grid ----- */
 .product-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
     gap: 30px;
-    margin-top: 20px;
+    margin-top: 25px;
 }
 
 .product {
     background-color: #fff;
     padding: 15px;
-    border-radius: 12px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    border-radius: 15px;
     text-align: center;
-    transition: transform 0.3s, box-shadow 0.3s;
-}
-
-.product:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    transition: transform 0.4s, box-shadow 0.4s;
 }
 
 .product img {
     width: 100%;
-    height: 250px; /* fixed height */
-    object-fit: cover; /* crop nicely */
     border-radius: 12px;
+    object-fit: cover;
+    transition: transform 0.3s, box-shadow 0.3s;
 }
 
 .product h3 {
     margin-top: 12px;
-    color: #00bcd4;
+    color: #ff6600;
+    font-size: 1.1rem;
+    transition: color 0.3s;
 }
 
-/* === Team Section === */
-.team-member {
-    text-align: center;
-    margin-bottom: 35px;
+.product:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.25);
 }
 
-.team-member img {
-    width: 250px;
+.product:hover img {
+    transform: scale(1.05);
+}
+
+/* ----- Buttons ----- */
+.cta-button {
+    background-color: #ff6600;
+    color: #fff;
+    border: none;
+    padding: 12px 25px;
     border-radius: 12px;
-    margin-bottom: 10px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.3s;
 }
 
-.team-member h3 {
-    font-size: 1.3rem;
-    color: #00bcd4;
+.cta-button:hover {
+    background-color: #ff4500;
+    transform: scale(1.1);
 }
 
-.team-member h4 {
-    font-size: 1rem;
-    color: #ff6f61;
-}
-
-/* === Forms === */
-form input, 
-form textarea, 
-form button {
+/* ----- Forms ----- */
+form input, form textarea, form button {
     width: 100%;
-    padding: 10px;
+    padding: 12px;
     margin-top: 8px;
     margin-bottom: 15px;
-    border-radius: 8px;
+    border-radius: 10px;
     border: 1px solid #ccc;
     font-size: 1rem;
 }
 
 form button {
-    background-color: #00bcd4;
+    background-color: #ff6600;
     color: #fff;
     font-weight: bold;
     border: none;
     cursor: pointer;
-    transition: background 0.3s;
 }
 
 form button:hover {
-    background-color: #ff6f61;
+    background-color: #ff4500;
+    transform: scale(1.05);
 }
 
-/* === Contact / Map Sections === */
-.contact-info, .social-media, .contact-form, .enquiry-section, .map-section {
-    background-color: #fff;
-    padding: 25px;
-    margin-bottom: 30px;
-    border-radius: 12px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+/* ----- Team Section ----- */
+.team-member {
+    text-align: center;
+    margin-bottom: 40px;
 }
 
+.team-member img {
+    width: 250px;
+    border-radius: 15px;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.team-member img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+}
+
+.team-member h3 {
+    font-size: 1.2rem;
+    color: #ff6600;
+}
+
+.team-member h4 {
+    font-size: 1rem;
+    color: #222;
+}
+
+/* ----- Map Section ----- */
 .map-container {
     max-width: 800px;
-    margin: 0 auto;
-    border-radius: 12px;
+    margin: 20px auto;
+    border-radius: 15px;
     overflow: hidden;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    box-shadow: 0 5px 20px rgba(0,0,0,0.2);
 }
 
 .map-container iframe {
     width: 100%;
-    height: 300px;
+    height: 350px;
     border: 0;
 }
 
-/* === Footer === */
+/* ----- Footer ----- */
 footer {
-    text-align: center;
-    padding: 25px 0;
-    background-color: #007b8a;
+    background-color: #000;
     color: #fff;
-    margin-top: 50px;
+    text-align: center;
+    padding: 30px 0;
 }
 
-/* === Media Queries === */
-@media screen and (max-width: 768px) {
-    header h1 {
-        font-size: 2rem;
-    }
+footer a {
+    color: #ff6600;
+    text-decoration: none;
+    transition: color 0.3s, transform 0.3s;
+}
 
+footer a:hover {
+    color: #fff;
+    transform: scale(1.1);
+}
+
+/* ----- Responsive ----- */
+@media(max-width:768px){
     nav ul {
-        display: none; /* hide nav by default */
+        display: none;
         flex-direction: column;
-        background-color: #00bcd4;
+        background: #111;
         position: absolute;
-        top: 70px;
-        right: 20px;
+        top: 60px;
+        right: 0;
         width: 220px;
         padding: 20px;
-        border-radius: 8px;
-        box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        border-radius: 10px;
     }
 
     nav ul.show {
@@ -238,13 +279,17 @@ footer {
     .hamburger {
         display: block;
     }
-}
 
-@media screen and (max-width: 480px) {
-    main h2 {
-        font-size: 1.8rem;
+    #hero h2 {
+        font-size: 2rem;
     }
 
+    #hero p {
+        font-size: 1rem;
+    }
+}
+
+@media(max-width:480px){
     .product-grid {
         grid-template-columns: 1fr;
     }
@@ -253,3 +298,16 @@ footer {
         width: 200px;
     }
 }
+/* ----- Fade-in Effect ----- */
+.fade-section {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.fade-in {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
