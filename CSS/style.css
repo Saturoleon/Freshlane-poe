@@ -298,6 +298,7 @@ footer a:hover {
         width: 200px;
     }
 }
+
 /* ----- Fade-in Effect ----- */
 .fade-section {
     opacity: 0;
@@ -309,5 +310,12 @@ footer a:hover {
     opacity: 1;
     transform: translateY(0);
 }
-
-
+/* ----- Footer Date & Time ----- */
+.footer-datetime {
+    display: inline-block;
+    margin-left: 15px;
+    font-size: 0.9rem;
+    color: #ff6600; /* Freshlane accent color */
+    font-weight: bold;
+    font-family: 'Montserrat', sans-serif;
+}

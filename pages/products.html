@@ -1,55 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Products - Freshlane</title>
-  <link rel="stylesheet" href="../css/style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products - Freshlane</title>
+    <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
-  <header>
+
+<header>
     <h1>Freshlane</h1>
-    <div class="hamburger" id="hamburger">☰</div>
-    <nav id="nav-menu">
-      <ul>
-        <li><a href="../index.html">Home</a></li>
-        <li><a href="about.html">About Us</a></li>
-        <li><a href="products.html" class="active">Products</a></li>
-        <li><a href="enquiry.html">Enquiry</a></li>
-        <li><a href="contact.html">Contact</a></li>
-      </ul>
+    <nav>
+        <ul id="nav-links">
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="products.html" class="active">Products</a></li>
+            <li><a href="team.html">Team</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="enquiry.html">Enquiry</a></li>
+        </ul>
+        <div class="hamburger" id="hamburger">&#9776;</div>
     </nav>
-  </header>
+</header>
 
-  <main>
-    <section class="product-page">
-      <h2>Our Streetwear Collection</h2>
-      <div class="product-grid">
+<section id="products">
+    <h2 style="text-align:center; margin-bottom:20px;">All Products</h2>
+    <div class="product-grid">
         <div class="product">
-          <img src="../images/hoodie.png" alt="Freshlane Hoodie">
-          <h3>Freshlane Hoodie</h3>
-          <p>R550 - Comfortable cotton hoodie for daily wear.</p>
+            <img src="../images/Hoodie.png" alt="Hoodie">
+            <h3>Hoodie</h3>
         </div>
+        <div class="product">
+            <img src="../images/outfit 2.jpg" alt="Outfit 2">
+            <h3>Outfit 2</h3>
+        </div>
+        
+        <div class="product">
+            <img src="../images/outfit 3.jpg" alt="Outfit 3">
+            <h3>Outfit 3</h3>
 
         <div class="product">
-          <img src="../images/hoodie-and-cargo-pants.png" alt="Cargo Combo">
-          <h3>Cargo Combo</h3>
-          <p>R950 - Hoodie and cargo pants combo, trendy and stylish.</p>
+            <img src="../images/outfit 5.jpg" alt="Outfit 5">
+            <h3>Outfit 4</h3>
         </div>
-
         <div class="product">
-          <img src="../images/freshlane-cargos.png" alt="Cargo Pants">
-          <h3>Freshlane Cargo Pants</h3>
-          <p>R600 - Durable, flexible, and perfect for all seasons.</p>
-        </div>
-      </div>
-    </section>
-  </main>
+            <img src="../images/outfit 6.jpg" alt="Outfit 6">
+            <h3>Outfit 5</h3>
+    </div>
+</section>
 
-  <footer>
-    <p>&copy; 2025 Freshlane. Walk your lane.</p>
-  </footer>
 
-  <script src="../js/script.js"></script>
+
+<script src="../js/script.js"></script>
+<footer>
+    <p>&copy; 2025 Freshlane. All rights reserved.
+        <a href="enquiry.html">Contact Us</a>
+        <span id="datetime" class="footer-datetime"></span>
+    </p>
+</footer>
+
 </body>
 </html>
