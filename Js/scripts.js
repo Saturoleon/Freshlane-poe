@@ -1,4 +1,4 @@
-// Hamburger menu toggle
+// --- Hamburger Menu ---
 const hamburger = document.getElementById('hamburger');
 const navLinks = document.getElementById('nav-links');
 
@@ -6,39 +6,30 @@ hamburger.addEventListener('click', () => {
     navLinks.classList.toggle('show');
 });
 
-// Fade in sections on scroll
+// --- Fade-in Sections ---
 const faders = document.querySelectorAll('.fade-section');
 
-const appearOptions = {
-    threshold: 0.3,
-};
-
-const appearOnScroll = new IntersectionObserver(function(
-    entries,
-    appearOnScroll
-){
+const appearOnScroll = new IntersectionObserver((entries, observer) => {
     entries.forEach(entry => {
-        if(!entry.isIntersecting){
-            return;
-        } else {
+        if (entry.isIntersecting) {
             entry.target.classList.add('fade-in');
-            appearOnScroll.unobserve(entry.target);
+            observer.unobserve(entry.target);
         }
     });
-}, appearOptions);
+}, { threshold: 0.3 });
 
 faders.forEach(fader => {
     appearOnScroll.observe(fader);
 });
 
-// ----- Date & Time in Footer -----
+// --- Live Date & Time ---
 function updateDateTime() {
     const dtSpan = document.getElementById('datetime');
     if (!dtSpan) return;
 
     const now = new Date();
 
-    const options = { 
+    const options = {
         weekday: 'long',
         year: 'numeric',
         month: 'long',
@@ -54,3 +45,28 @@ function updateDateTime() {
 
 updateDateTime();
 setInterval(updateDateTime, 1000);
+
+// ===== Image Enlargement Preview =====
+const imgPreview = document.getElementById("imgPreview");
+const previewImg = document.getElementById("previewImg");
+const closePreview = document.getElementById("closePreview");
+
+// When clicking any product image → open preview
+document.querySelectorAll(".product img").forEach(img => {
+    img.addEventListener("click", () => {
+        imgPreview.style.display = "flex";
+        previewImg.src = img.src;
+    });
+});
+
+// Close preview when clicking X
+closePreview.addEventListener("click", () => {
+    imgPreview.style.display = "none";
+});
+
+// Close preview when clicking outside image
+imgPreview.addEventListener("click", (e) => {
+    if (e.target === imgPreview) {
+        imgPreview.style.display = "none";
+    }
+});
