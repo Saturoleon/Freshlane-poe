@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About - Freshlane</title>
     <meta name="description" content="Learn about Freshlane, the youth streetwear brand inspiring the next generation with hoodies, cargos, and stylish outfits.">
-    <meta name="keywords" content="Freshlane, streetwear, hoodies, cargo pants, youth fashion, About Us">
     <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
@@ -20,12 +19,13 @@
             <li><a href="about.html" class="active">About</a></li>
             <li><a href="enquiry.html">Enquiry</a></li>
         </ul>
-       <div class="hamburger">
-    <span></span>
-    <span></span>
-    <span></span>
-</div>
 
+        <!-- Hamburger -->
+        <div class="hamburger" id="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
     </nav>
 </header>
 
@@ -33,54 +33,42 @@
     <h2>Our Story</h2>
     <div class="about-container">
         <img src="../images/our-story.jpg" alt="Our Story" class="about-image">
-        <p class="about-text">
-            Freshlane was created with one mission —  
-            <strong>to inspire the youth to walk their own lane with confidence, style and identity.</strong>  
-            <br><br>
-            We specialise in premium streetwear including hoodies, cargo pants, and everyday stylish outfits.  
-            Our designs blend <strong>comfort, authenticity, and modern street culture</strong> to empower the new generation.  
-            <br><br>
-            At Freshlane, fashion is more than clothing —  
-            <strong>it's a lifestyle, a statement, and a personal journey.</strong>
+        <p>
+            Freshlane was created with one mission — <strong>to inspire the youth to walk their own lane with confidence, style and identity.</strong><br><br>
+            We specialise in premium streetwear including hoodies, cargo pants, and everyday stylish outfits.<br>
+            Our designs blend <strong>comfort, authenticity, and modern street culture</strong> to empower the new generation.<br><br>
+            At Freshlane, fashion is more than clothing — <strong>it's a lifestyle, a statement, and a personal journey.</strong>
         </p>
     </div>
 </section>
 
 <section class="map-section">
     <h2>Find Us</h2>
-    <div class="map-container">
-        <iframe 
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3647.1437049882657!2d29.446523675169207!3d-23.919964878555078!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1ec6d78ee8ac0271%3A0x96d935ece0419b17!2s9%20Tholo%20St%2C%20Mypark%20X9%2C%20Polokwane%2C%200699!5e0!3m2!1sen!2sza!4v1758901356311!5m2!1sen!2sza" 
-            width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy"
-            referrerpolicy="no-referrer-when-downgrade">
-        </iframe>
-    </div>
+    <iframe 
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3647.1437049882657!2d29.446523675169207!3d-23.919964878555078!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1ec6d78ee8ac0271%3A0x96d935ece0419b17!2s9%20Tholo%20St%2C%20Mypark%20X9%2C%20Polokwane%2C%200699!5e0!3m2!1sen!2sza!4v1758901356311!5m2!1sen!2sza" 
+        width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
 </section>
 
 <footer>
-    <p>&copy; 2025 Freshlane. All rights reserved.
+    <p>&copy; 2025 Freshlane. All rights reserved. |
         <a href="enquiry.html">Contact Us</a> |
         <span id="datestamp"></span> |
         <span id="time"></span>
     </p>
 </footer>
 
+<!-- Scripts -->
+<script src="../js/script.js"></script>
 <script>
-function displayDate() {
-    const today = new Date();
-    document.getElementById("datestamp").textContent = "Today's Date: " + today.toDateString();
-}
-displayDate();
-
-function displayTime() {
-    const now = new Date();
-    let h = String(now.getHours()).padStart(2,'0');
-    let m = String(now.getMinutes()).padStart(2,'0');
-    let s = String(now.getSeconds()).padStart(2,'0');
-    document.getElementById("time").textContent = h + ":" + m + ":" + s;
-}
-setInterval(displayTime, 1000);
-displayTime();
+    // LIVE DATE & TIME
+    function updateDateTime() {
+        const today = new Date();
+        document.getElementById('datestamp').textContent = "Date: " + today.toDateString();
+        const now = new Date();
+        document.getElementById('time').textContent = now.toLocaleTimeString();
+    }
+    updateDateTime();
+    setInterval(updateDateTime, 1000);
 </script>
 
 </body>
