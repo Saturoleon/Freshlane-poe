@@ -5,6 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Enquiry - Freshlane</title>
   <link rel="stylesheet" href="../css/style.css">
+  <style>
+    /* quick inline styles for error message */
+    .error { color: red; font-size: 14px; margin: 5px 0; }
+    input, textarea { width: 100%; padding: 8px; margin: 4px 0; box-sizing: border-box; }
+    table { width: 100%; }
+  </style>
 </head>
 <body>
 
@@ -23,12 +29,34 @@
 </header>
 
 <section id="enquiry" style="max-width:600px; margin:40px auto;">
-  <h2 style="text-align:center; margin-bottom:20px;">Contact Us</h2>
-  <form id="enquiryForm">
-    <input type="text" name="name" placeholder="Full Name" required>
-    <input type="email" name="email" placeholder="Email Address" required>
-    <textarea name="message" rows="6" placeholder="Your Message" required></textarea>
-    <button type="submit">Send Enquiry</button>
+  <h1 style="text-align:center;">Get In Touch With Us:</h1>
+  <form action="mailto:youremail@example.com" method="post" class="contact-form" onsubmit="return validateForm()">
+    <table>
+      <tr>
+        <td width="150">Name:</td>
+        <td><input type="text" name="name" id="name" placeholder="Enter your name"></td>
+      </tr>
+      <tr>
+        <td width="150">Surname:</td>
+        <td><input type="text" name="surname" id="surname" placeholder="Enter your surname"></td>
+      </tr>
+      <tr>
+        <td width="150">Email:</td>
+        <td><input type="email" name="email" id="email" placeholder="Enter your email"></td>
+      </tr>
+      <tr>
+        <td width="150">Message:</td>
+        <td><textarea name="message" id="message" rows="5" placeholder="Enter your message"></textarea></td>
+      </tr>
+      <tr>
+        <td width="150"></td>
+        <td><p class="error" id="errorMessage"></p></td>
+      </tr>
+      <tr>
+        <td width="150"></td>
+        <td><input type="submit" name="submit" value="Send Email"></td>
+      </tr>
+    </table>
   </form>
 </section>
 
@@ -40,24 +68,52 @@
   </p>
 </footer>
 
-<!-- 🔥 REAL WORKING DATE + TIME SCRIPT -->
+<!-- REAL-TIME DATE + TIME -->
 <script>
   function displayDate() {
     const today = new Date();
-    document.getElementById("datestamp").innerHTML =
-      "Today's Date: " + today.toDateString();
+    document.getElementById("datestamp").textContent = "Today's Date: " + today.toDateString();
   }
   displayDate();
 
   function displayTime() {
     const now = new Date();
-    let h = String(now.getHours()).padStart(2, '0');
-    let m = String(now.getMinutes()).padStart(2, '0');
-    let s = String(now.getSeconds()).padStart(2, '0');
+    const h = String(now.getHours()).padStart(2,'0');
+    const m = String(now.getMinutes()).padStart(2,'0');
+    const s = String(now.getSeconds()).padStart(2,'0');
     document.getElementById("time").textContent = h + ":" + m + ":" + s;
   }
-  setInterval(displayTime, 1000);
+  setInterval(displayTime,1000);
   displayTime();
+</script>
+
+<!-- FORM VALIDATION -->
+<script>
+function validateForm() {
+    const name = document.getElementById('name').value.trim();
+    const surname = document.getElementById('surname').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const message = document.getElementById('message').value.trim();
+    const error = document.getElementById('errorMessage');
+
+    error.textContent = ""; // clear previous errors
+
+    if(name === "" || surname === "" || email === "" || message === "") {
+        error.textContent = "Please fill in all fields.";
+        return false;
+    }
+
+    const emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+    if(!email.match(emailPattern)) {
+        error.textContent = "Please enter a valid email address.";
+        return false;
+    }
+
+    // success feedback (optional)
+    alert(`Thank you ${name} ${surname}! Your message has been sent.`);
+
+    return true; // allow form submission
+}
 </script>
 
 </body>
