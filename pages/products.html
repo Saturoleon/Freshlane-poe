@@ -105,6 +105,16 @@ popup.addEventListener("click", e => {
     if (e.target === popup) popup.style.display = "none";
 });
 </script>
+<script>
+const hamburger = document.querySelector(".hamburger");
+const navLinks = document.getElementById("nav-links");
 
+if(hamburger && navLinks){
+    hamburger.addEventListener("click", () => {
+        navLinks.classList.toggle("show");
+        hamburger.classList.toggle("active");
+    });
+}
+</script>
 </body>
 </html>

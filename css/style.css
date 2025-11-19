@@ -35,12 +35,18 @@ header h1 {
     display: inline-block;
 }
 
+/* ----- Navigation ----- */
+nav {
+    position: relative;
+}
+
 nav ul {
     list-style: none;
     display: flex;
     gap: 25px;
     justify-content: flex-end;
     margin-right: 15px;
+    transition: all 0.3s ease;
 }
 
 nav ul li a {
@@ -56,14 +62,41 @@ nav ul li a.active {
     transform: scale(1.1);
 }
 
+/* ----- Hamburger ----- */
 .hamburger {
-    display: none;
+    display: none; /* hidden by default, only shows on mobile */
     cursor: pointer;
-    font-size: 28px;
-    color: #fff;
     position: absolute;
     top: 15px;
     right: 15px;
+    width: 35px;
+    height: 25px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    z-index: 2000;
+}
+
+.hamburger span {
+    display: block;
+    height: 3px;
+    width: 100%;
+    background-color: #fff;
+    border-radius: 2px;
+    transition: all 0.3s ease;
+}
+
+/* Hamburger active state (turns into X) */
+.hamburger.active span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+
+.hamburger.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(6px, -6px);
 }
 
 /* ----- Hero Section ----- */
@@ -128,22 +161,19 @@ nav ul li a.active {
     text-align: center;
     box-shadow: 0 5px 15px rgba(0,0,0,0.1);
     transition: transform 0.4s, box-shadow 0.4s;
+    height: 360px; /* uniform height */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
 }
 
 .product img {
     width: 100%;
-    height: 280px;
+    height: 260px;
     object-fit: cover;
     border-radius: 12px;
     transition: transform 0.3s;
 }
-.product img {
-    width: 100%;
-    height: 250px;   /* fits perfectly in 360px card */
-    object-fit: cover;
-    border-radius: 12px;
-}
-
 
 .product:hover {
     transform: translateY(-10px);
@@ -155,84 +185,34 @@ nav ul li a.active {
 }
 
 .product h3 {
-    margin-top: 12px;
+    margin-top: auto;
+    padding-top: 10px;
     color: #ff6600;
     font-size: 1.1rem;
 }
-.product h3 {
-    margin-top: auto;
-    padding-top: 10px;
-}
-
-.product img {
-    width: 100%;
-    height: 260px;     /* FIXED HEIGHT */
-    object-fit: cover; /* crops perfectly */
-    border-radius: 12px;
-}
-.product {
-    background-color: #fff;
-    padding: 15px;
-    border-radius: 15px;
-    text-align: center;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-    transition: transform 0.4s, box-shadow 0.4s;
-
-    height: 360px; /* MAKE ALL BOXES SAME HEIGHT */
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-}
-
 
 /* ----- Team Section ----- */
-.team-member {
-    text-align: center;
-    margin-bottom: 40px;
-}
-
-.team-member img {
-    width: 250px;
-    border-radius: 15px;
-    transition: transform 0.3s, box-shadow 0.3s;
-}
-
-.team-member img:hover {
-    transform: scale(1.05);
-    box-shadow: 0 6px 20px rgba(0,0,0,0.3);
-}
-
-.team-member h3 {
-    font-size: 1.2rem;
-    color: #ff6600;
-}
-
-.team-member h4 {
-    font-size: 1rem;
-    color: #222;
-}
-/* ----- Team Page Layout Fix ----- */
-
 .team-container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 30px;
+    gap: 25px;
     padding: 20px;
 }
 
 .team-member {
-    text-align: center;
     background: #fff;
     padding: 20px;
-    border-radius: 15px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    text-align: center;
 }
 
 .team-member img {
     width: 100%;
-    height: 320px;              /* SAME HEIGHT for all images */
-    object-fit: cover;          /* Crops nicely */
-    border-radius: 15px;
+    height: 280px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 10px;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
@@ -251,34 +231,12 @@ nav ul li a.active {
     font-size: 1rem;
     color: #222;
 }
+
 #team {
     max-width: 1000px;
     margin: 40px auto;
     text-align: center;
 }
-
-.team-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 25px;
-    padding: 20px;
-}
-
-.team-member {
-    background: #fff;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
-}
-
-.team-member img {
-    width: 100%;
-    height: 280px;          /* ensures equal height */
-    object-fit: cover;      /* keeps image neat and cropped */
-    border-radius: 10px;
-    margin-bottom: 10px;
-}
-
 
 /* ----- Forms ----- */
 form input, form textarea, form button {
@@ -373,7 +331,7 @@ footer a:hover {
 
     nav ul.show { display: flex; }
 
-    .hamburger { display: block; }
+    .hamburger { display: flex; }
 
     #hero h2 { font-size: 2rem; }
     #hero p { font-size: 1rem; }
@@ -383,6 +341,7 @@ footer a:hover {
     .product-grid { grid-template-columns: 1fr; }
     .team-member img { width: 200px; }
 }
+
 /* ===== IMAGE PREVIEW (LIGHTBOX) ===== */
 .img-preview {
     display: none;
@@ -418,7 +377,8 @@ footer a:hover {
 #closePreview:hover {
     color: #ff6600;
 }
-/* ABOUT PAGE */
+
+/* ----- About Page ----- */
 #about {
     max-width: 1000px;
     margin: 40px auto;

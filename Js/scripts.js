@@ -1,16 +1,6 @@
-// --- Hamburger Menu ---
 document.addEventListener("DOMContentLoaded", () => {
-    const hamburger = document.querySelector(".hamburger");
-    const navLinks = document.querySelector("#nav-links, .nav-links"); // support both IDs & classes
 
-    if (hamburger && navLinks) {
-        hamburger.addEventListener("click", () => {
-            navLinks.classList.toggle("show"); // show/hide menu
-            hamburger.classList.toggle("active"); // optional: for animated hamburger
-        });
-    }
-
-    // --- Fade-in Sections ---
+    // --- FADE-IN SECTIONS ---
     const faders = document.querySelectorAll('.fade-section');
     const appearOnScroll = new IntersectionObserver((entries, observer) => {
         entries.forEach(entry => {
@@ -22,34 +12,31 @@ document.addEventListener("DOMContentLoaded", () => {
     }, { threshold: 0.3 });
     faders.forEach(fader => appearOnScroll.observe(fader));
 
-    // --- Live Date & Time ---
-    const dtSpan = document.getElementById('datetime');
-    if (dtSpan) {
-        function updateDateTime() {
-            const now = new Date();
-            const options = {
-                weekday: 'long',
-                year: 'numeric',
-                month: 'long',
-                day: 'numeric',
-                hour: '2-digit',
-                minute: '2-digit',
-                second: '2-digit',
-                hour12: true
-            };
-            dtSpan.textContent = now.toLocaleString('en-ZA', options);
-        }
-        updateDateTime();
-        setInterval(updateDateTime, 1000);
-    }
+    // --- LIVE DATE & TIME ---
+    const dateEl = document.getElementById('datestamp');
+    const timeEl = document.getElementById('time');
 
-    // --- Image Enlargement Preview ---
+    function updateDateTime() {
+        const now = new Date();
+        if(dateEl) dateEl.textContent = "Today's Date: " + now.toDateString();
+
+        if(timeEl) {
+            let h = String(now.getHours()).padStart(2, "0");
+            let m = String(now.getMinutes()).padStart(2, "0");
+            let s = String(now.getSeconds()).padStart(2, "0");
+            timeEl.textContent = h + ":" + m + ":" + s;
+        }
+    }
+    updateDateTime();
+    setInterval(updateDateTime, 1000);
+
+    // --- IMAGE PREVIEW POPUP ---
     const imgPreview = document.getElementById("imgPreview");
     const previewImg = document.getElementById("previewImg");
     const closePreview = document.getElementById("closePreview");
 
     if (imgPreview && previewImg && closePreview) {
-        document.querySelectorAll(".product img").forEach(img => {
+        document.querySelectorAll(".previewable").forEach(img => {
             img.addEventListener("click", () => {
                 imgPreview.style.display = "flex";
                 previewImg.src = img.src;
@@ -64,4 +51,16 @@ document.addEventListener("DOMContentLoaded", () => {
             if (e.target === imgPreview) imgPreview.style.display = "none";
         });
     }
+
+    // --- HAMBURGER MENU TOGGLE ---
+    const hamburger = document.getElementById("hamburger");
+    const navMenu = document.querySelector("nav ul");
+
+    if(hamburger && navMenu) {
+        hamburger.addEventListener("click", () => {
+            hamburger.classList.toggle("active"); // Animate hamburger to X
+            navMenu.classList.toggle("show");     // Show/hide nav menu
+        });
+    }
+
 });

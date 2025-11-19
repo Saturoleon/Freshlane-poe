@@ -71,5 +71,16 @@
     setInterval(updateDateTime, 1000);
 </script>
 
+<script>
+const hamburger = document.querySelector(".hamburger");
+const navLinks = document.getElementById("nav-links");
+
+if(hamburger && navLinks){
+    hamburger.addEventListener("click", () => {
+        navLinks.classList.toggle("show");
+        hamburger.classList.toggle("active");
+    });
+}
+</script>
 </body>
 </html>

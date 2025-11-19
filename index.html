@@ -9,7 +9,7 @@
     <meta name="description" content="Freshlane is a youth-focused streetwear brand offering hoodies, cargo pants, and streetwear. Shop online and walk your lane with confidence.">
     <meta name="keywords" content="Freshlane, streetwear, youth fashion, hoodies, cargo pants, trendy clothing, Walk Your Lane">
     <meta name="author" content="Leon Malatji">
-    
+
     <!-- Open Graph / Facebook -->
     <meta property="og:title" content="Freshlane | Walk Your Lane - Youth Streetwear">
     <meta property="og:description" content="Discover Freshlane, the youth streetwear brand with hoodies, cargos, and stylish streetwear. Stand out and express yourself.">
@@ -31,8 +31,8 @@
 </head>
 <body>
 
+<!-- ===== HEADER ===== -->
 <header>
-    <header>
     <h1>Freshlane</h1>
 
     <nav>
@@ -44,7 +44,7 @@
             <li><a href="pages/enquiry.html">Enquiry</a></li>
         </ul>
 
-        <!--  HAMBURGER -->
+        <!-- Hamburger Menu -->
         <div class="hamburger" id="hamburger">
             <span></span>
             <span></span>
@@ -53,14 +53,14 @@
     </nav>
 </header>
 
-</header>
-
+<!-- ===== HERO SECTION ===== -->
 <section id="hero">
     <h2>Walk Your Lane</h2>
     <p>Freshlane is a premium youth clothing brand bringing you hoodies, cargos, and streetwear to stand out and express yourself.</p>
     <img src="images/Freshlane Logo Design.png" alt="Freshlane Logo" style="max-width:300px; margin-top:20px;">
 </section>
 
+<!-- ===== PRODUCTS SECTION ===== -->
 <section id="products-home">
     <h2 style="text-align:center; margin-bottom:20px;">Our Top Products</h2>
     <div class="product-grid">
@@ -79,63 +79,84 @@
     </div>
 </section>
 
-<!-- Image Preview Popup -->
+<!-- ===== IMAGE PREVIEW POPUP ===== -->
 <div id="imgPreview" class="img-preview">
     <span id="closePreview">&times;</span>
     <img id="previewImg" src="" alt="Preview">
 </div>
 
+<!-- ===== FOOTER ===== -->
 <footer>
-    <p>&copy; 2025 Freshlane. All rights reserved.
+    <p>&copy; 2025 Freshlane. All rights reserved. |
         <a href="pages/enquiry.html">Contact Us</a> |
         <span id="datestamp"></span> |
         <span id="time"></span>
     </p>
 </footer>
 
+<!-- ===== SCRIPTS ===== -->
 <script>
-  // LIVE DATE
-  function displayDate() {
-    const today = new Date();
-    document.getElementById("datestamp").textContent =
-      "Today's Date: " + today.toDateString();
-  }
-  displayDate();
+document.addEventListener("DOMContentLoaded", () => {
 
-  // LIVE TIME
-  function displayTime() {
-    const now = new Date();
-    let h = String(now.getHours()).padStart(2, "0");
-    let m = String(now.getMinutes()).padStart(2, "0");
-    let s = String(now.getSeconds()).padStart(2, "0");
-    document.getElementById("time").textContent = h + ":" + m + ":" + s;
-  }
-  setInterval(displayTime, 1000);
-  displayTime();
+    // --- Hamburger Menu ---
+    const hamburger = document.querySelector(".hamburger");
+    const navLinks = document.querySelector("#nav-links");
 
-  // IMAGE PREVIEW
-  const images = document.querySelectorAll(".previewable");
-  const popup = document.getElementById("imgPreview");
-  const popupImg = document.getElementById("previewImg");
-  const closeBtn = document.getElementById("closePreview");
+    if (hamburger && navLinks) {
+        hamburger.addEventListener("click", () => {
+            navLinks.classList.toggle("show"); // toggle menu
+            hamburger.classList.toggle("active"); // optional: animated hamburger
+        });
+    }
 
-  images.forEach(img => {
-      img.addEventListener("click", () => {
-          popup.style.display = "flex";
-          popupImg.src = img.src;
-      });
-  });
+    // --- Fade-in Sections ---
+    const faders = document.querySelectorAll('.fade-section');
+    const appearOnScroll = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('fade-in');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.3 });
+    faders.forEach(fader => appearOnScroll.observe(fader));
 
-  closeBtn.addEventListener("click", () => {
-      popup.style.display = "none";
-  });
+    // --- Live Date & Time ---
+    const dtSpan = document.getElementById('datestamp');
+    const timeSpan = document.getElementById('time');
+    function updateDateTime() {
+        const now = new Date();
+        dtSpan.textContent = now.toDateString();
+        let h = String(now.getHours()).padStart(2, "0");
+        let m = String(now.getMinutes()).padStart(2, "0");
+        let s = String(now.getSeconds()).padStart(2, "0");
+        timeSpan.textContent = h + ":" + m + ":" + s;
+    }
+    updateDateTime();
+    setInterval(updateDateTime, 1000);
 
-  popup.addEventListener("click", e => {
-      if (e.target === popup) popup.style.display = "none";
-  });
+    // --- Image Enlargement Preview ---
+    const imgPreview = document.getElementById("imgPreview");
+    const previewImg = document.getElementById("previewImg");
+    const closePreview = document.getElementById("closePreview");
+
+    document.querySelectorAll(".previewable").forEach(img => {
+        img.addEventListener("click", () => {
+            imgPreview.style.display = "flex";
+            previewImg.src = img.src;
+        });
+    });
+
+    closePreview.addEventListener("click", () => {
+        imgPreview.style.display = "none";
+    });
+
+    imgPreview.addEventListener("click", (e) => {
+        if (e.target === imgPreview) imgPreview.style.display = "none";
+    });
+
+});
 </script>
-
-<script src="js/script.js"></script>
 
 </body>
 </html>
