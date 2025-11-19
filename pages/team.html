@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Team - Freshlane</title>
+    <meta name="description" content="Meet the Freshlane team including founders and marketing team behind the youth streetwear brand.">
+    <meta name="keywords" content="Freshlane, team, founders, youth fashion, streetwear">
     <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
@@ -24,51 +26,45 @@
 
 <section id="team">
     <h2>Meet Our Team</h2>
-
     <div class="team-container">
-        
         <div class="team-member">
             <img src="../images/Leon-founder.jpeg" alt="Founder Leon">
             <h3>Leon</h3>
             <h4>Founder & CEO</h4>
         </div>
-
         <div class="team-member">
-            <img src="../images/co-founder watty" alt="Watty - Co-Founder">
+            <img src="../images/co-founder watty.jpg" alt="Watty - Co-Founder">
             <h3>Watty Sithagu</h3>
             <h4>Co-Founder & Sales</h4>
         </div>
-
         <div class="team-member">
-            <img src="../images/co founder priv" alt="Privilege - Co-Founder">
+            <img src="../images/co founder priv.jpg" alt="Privilege - Co-Founder">
             <h3>Privilege Sithagu</h3>
             <h4>Co-Founder & Marketing</h4>
         </div>
-
     </div>
 </section>
 
 <footer>
     <p>&copy; 2025 Freshlane. All rights reserved.
-        <a href="enquiry.html">Contact Us</a>
+        <a href="enquiry.html">Contact Us</a> |
         <span id="datestamp"></span> |
         <span id="time"></span>
     </p>
 </footer>
 
-<!-- LIVE DATE & TIME SCRIPT -->
 <script>
 function displayDate() {
     const today = new Date();
-    document.getElementById("datestamp").innerHTML = "Today's Date: " + today.toDateString();
+    document.getElementById("datestamp").textContent = "Today's Date: " + today.toDateString();
 }
 displayDate();
 
 function displayTime() {
     const now = new Date();
-    let h = String(now.getHours()).padStart(2, '0');
-    let m = String(now.getMinutes()).padStart(2, '0');
-    let s = String(now.getSeconds()).padStart(2, '0');
+    let h = String(now.getHours()).padStart(2,'0');
+    let m = String(now.getMinutes()).padStart(2,'0');
+    let s = String(now.getSeconds()).padStart(2,'0');
     document.getElementById("time").textContent = h + ":" + m + ":" + s;
 }
 setInterval(displayTime, 1000);
@@ -77,4 +73,3 @@ displayTime();
 
 </body>
 </html>
-
