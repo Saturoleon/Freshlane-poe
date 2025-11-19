@@ -1,21 +1,28 @@
-## Changelog
+CHANGELOG.md
 
-### Part 1 Feedback Fixes
-- Updated navigation links to be consistent across all pages.
-- Adjusted image sizes for products and hero section to display correctly.
-- Fixed About Us layout, ensuring team member sections are aligned and visually appealing.
-- Corrected typography and spacing issues identified in Part 1 feedback.
+# Freshlane Website Changelog
 
-### Website Improvements
-- Added a responsive **hamburger menu** for mobile and tablet screens.
-- Embedded **Google Map** on About Us page to show location.
-- Improved product image sizes for consistent display in product grid.
-- Enhanced responsive design using **media queries** for desktop, tablet, and mobile breakpoints.
-- Ensured **responsive typography** and button hover effects across all pages.
-- Added smooth transitions for interactive elements such as buttons and product images.
-## Responsive Design Evidence
+## v1.0.0 - 16 November 2025
+- *Initial Release*:
+  - Home page with hero section and brand story
+  - Product gallery page with hover effects
+  - Team page with founder and team images
+  - Enquiry form page with proper input fields
+  - Contact page with embedded Google map
+- *Styling Updates*:
+  - Modern CSS with sticky navigation and responsive design
+  - Hover animations for products and team images
+  - Fade-in scroll animations for sections
+- *File Organization*:
+  - Separate folder for pages
+  - Images folder with all assets named according to original specifications
+- *References Included*:
+  - Rosebank College Lecture Notes, 2025
+  - MDN Web Docs CSS & JS References
 
-### Desktop
-![Desktop View](screenshots/homepage .png)
-### Mobile
-![Mobile View](screenshots/hamburger.png)
+
+---
+
+Bro, if you want, I can also create the VS Code-ready zip with all the pages, CSS, JS, images, and these README + CHANGELOG files already included and ready to run. This way, you just open it and it’s perfect.
+
+Do you want me to do that next?
