@@ -52,14 +52,35 @@
     </div>
 </section>
 
-<script src="../js/script.js"></script>
+<!-- REMOVE THIS: <script src="../js/script.js"></script> -->
 
 <footer>
     <p>&copy; 2025 Freshlane. All rights reserved.
         <a href="enquiry.html">Contact Us</a>
-        <span id="datetime" class="footer-datetime"></span>
+        <span id="datestamp"></span> |
+        <span id="time"></span>
     </p>
 </footer>
+
+<!--  REAL-TIME DATE & TIME SCRIPT (Works on its own) -->
+<script>
+    function displayDate() {
+        const today = new Date();
+        document.getElementById("datestamp").innerHTML =
+        "Today's Date: " + today.toDateString();
+    }
+    displayDate();
+
+    function displayTime() {
+        const now = new Date();
+        let h = String(now.getHours()).padStart(2, '0');
+        let m = String(now.getMinutes()).padStart(2, '0');
+        let s = String(now.getSeconds()).padStart(2, '0');
+        document.getElementById("time").textContent = h + ":" + m + ":" + s;
+    }
+    setInterval(displayTime, 1000);
+    displayTime();
+</script>
 
 </body>
 </html>

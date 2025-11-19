@@ -24,41 +24,93 @@
 
 <section id="products">
     <h2 style="text-align:center; margin-bottom:20px;">All Products</h2>
+
     <div class="product-grid">
+
         <div class="product">
-            <img src="../images/Hoodie.png" alt="Hoodie">
+            <img src="../images/Hoodie.png" alt="Hoodie" class="previewable">
             <h3>Hoodie</h3>
         </div>
+
         <div class="product">
-            <img src="../images/outfit 2.jpg" alt="Outfit 2">
+            <img src="../images/outfit 2.jpg" alt="Outfit 2" class="previewable">
             <h3>Outfit 2</h3>
         </div>
+
         <div class="product">
-            <img src="../images/outfit 3.jpg" alt="Outfit 3">
+            <img src="../images/outfit 3.jpg" alt="Outfit 3" class="previewable">
             <h3>Outfit 3</h3>
-      </div>
-      <div class="product">
-            <img src="../images/outfit 5.jpg" alt="Outfit 5">
+        </div>
+
+        <div class="product">
+            <img src="../images/outfit 5.jpg" alt="Outfit 5" class="previewable">
             <h3>Outfit 4</h3>
         </div>
+
         <div class="product">
-            <img src="../images/outfit 6.jpg" alt="Outfit 6">
+            <img src="../images/outfit 6.jpg" alt="Outfit 6" class="previewable">
             <h3>Outfit 5</h3>
         </div>
-        
-</section>
-     <script src="../js/script.js"></script>
- <footer>
-         <p>&copy; 2025 Freshlane. All rights reserved.
-        <a href="enquiry.html">Contact Us</a>
-        <span id="datetime" class="footer-datetime"></span> </p>
 
+    </div>
+</section>
+
+<footer>
+    <p>&copy; 2025 Freshlane. All rights reserved.
+        <a href="enquiry.html">Contact Us</a>
+        <span id="datestamp"></span> |
+        <span id="time"></span>
+    </p>
 </footer>
+
 <!-- Image Preview Popup -->
 <div id="imgPreview" class="img-preview">
     <span id="closePreview">&times;</span>
     <img id="previewImg" src="" alt="Preview">
 </div>
+
+<!-- 🔥 Image Popup + Date/Time Script -->
+<script>
+    // LIVE DATE
+    function displayDate() {
+        const today = new Date();
+        document.getElementById("datestamp").innerHTML =
+        "Today's Date: " + today.toDateString();
+    }
+    displayDate();
+
+    // LIVE TIME
+    function displayTime() {
+        const now = new Date();
+        let h = String(now.getHours()).padStart(2, '0');
+        let m = String(now.getMinutes()).padStart(2, '0');
+        let s = String(now.getSeconds()).padStart(2, '0');
+        document.getElementById("time").textContent = h + ":" + m + ":" + s;
+    }
+    setInterval(displayTime, 1000);
+    displayTime();
+
+    // IMAGE PREVIEW POPUP
+    const images = document.querySelectorAll(".previewable");
+    const popup = document.getElementById("imgPreview");
+    const popupImg = document.getElementById("previewImg");
+    const closeBtn = document.getElementById("closePreview");
+
+    images.forEach(img => {
+        img.addEventListener("click", () => {
+            popup.style.display = "flex";
+            popupImg.src = img.src;
+        });
+    });
+
+    closeBtn.addEventListener("click", () => {
+        popup.style.display = "none";
+    });
+
+    popup.addEventListener("click", (e) => {
+        if (e.target === popup) popup.style.display = "none";
+    });
+</script>
 
 </body>
 </html>

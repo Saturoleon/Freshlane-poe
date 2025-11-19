@@ -6,7 +6,6 @@
     <title>Freshlane</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
-
 <body>
 
 <header>
@@ -19,50 +18,91 @@
             <li><a href="pages/about.html">About</a></li>
             <li><a href="pages/enquiry.html">Enquiry</a></li>
         </ul>
-
         <div class="hamburger" id="hamburger">&#9776;</div>
     </nav>
 </header>
 
-<!-- HERO SECTION -->
 <section id="hero">
     <h2>Walk Your Lane</h2>
-    <p>Freshlane is a premium youth clothing brand bringing you hoodies, cargos, and streetwear 
-       to stand out and express yourself.</p>
-
-    <img src="images/Freshlane Logo Design.png" alt="Freshlane Logo">
+    <p>Freshlane is a premium youth clothing brand bringing you hoodies, cargos, and streetwear to stand out and express yourself.</p>
+    <img src="images/Freshlane Logo Design.png" alt="Freshlane Logo" style="max-width:300px; margin-top:20px;">
 </section>
 
-<!-- TOP PRODUCTS -->
-<section id="products-home" class="fade-section">
+<section id="products-home">
     <h2 style="text-align:center; margin-bottom:20px;">Our Top Products</h2>
-
     <div class="product-grid">
         <div class="product">
-            <img src="images/Hoodie.png" alt="Hoodie">
+            <img src="images/Hoodie.png" alt="Hoodie" class="previewable">
             <h3>Hoodie</h3>
         </div>
-
         <div class="product">
-            <img src="images/outfit 2.jpg" alt="Outfit 2">
+            <img src="images/outfit 2.jpg" alt="Outfit 2" class="previewable">
             <h3>Outfit 2</h3>
         </div>
-
         <div class="product">
-            <img src="images/outfit 3.jpg" alt="Outfit 3">
+            <img src="images/outfit 3.jpg" alt="Outfit 3" class="previewable">
             <h3>Outfit 3</h3>
         </div>
     </div>
 </section>
 
-<script src="js/script.js"></script>
+<!-- Image Preview Popup -->
+<div id="imgPreview" class="img-preview">
+    <span id="closePreview">&times;</span>
+    <img id="previewImg" src="" alt="Preview">
+</div>
 
 <footer>
     <p>&copy; 2025 Freshlane. All rights reserved.
-        <a href="pages/enquiry.html">Contact Us</a>
-        <span id="datetime" class="footer-datetime"></span>
+        <a href="pages/enquiry.html">Contact Us</a> |
+        <span id="datestamp"></span> |
+        <span id="time"></span>
     </p>
 </footer>
+
+<script>
+  // LIVE DATE
+  function displayDate() {
+    const today = new Date();
+    document.getElementById("datestamp").textContent =
+      "Today's Date: " + today.toDateString();
+  }
+  displayDate();
+
+  // LIVE TIME
+  function displayTime() {
+    const now = new Date();
+    let h = String(now.getHours()).padStart(2, "0");
+    let m = String(now.getMinutes()).padStart(2, "0");
+    let s = String(now.getSeconds()).padStart(2, "0");
+    document.getElementById("time").textContent = h + ":" + m + ":" + s;
+  }
+  setInterval(displayTime, 1000);
+  displayTime();
+
+  // IMAGE PREVIEW
+  const images = document.querySelectorAll(".previewable");
+  const popup = document.getElementById("imgPreview");
+  const popupImg = document.getElementById("previewImg");
+  const closeBtn = document.getElementById("closePreview");
+
+  images.forEach(img => {
+      img.addEventListener("click", () => {
+          popup.style.display = "flex";
+          popupImg.src = img.src;
+      });
+  });
+
+  closeBtn.addEventListener("click", () => {
+      popup.style.display = "none";
+  });
+
+  popup.addEventListener("click", e => {
+      if (e.target === popup) popup.style.display = "none";
+  });
+</script>
+
+<script src="js/script.js"></script>
 
 </body>
 </html>

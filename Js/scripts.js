@@ -70,3 +70,4 @@ imgPreview.addEventListener("click", (e) => {
         imgPreview.style.display = "none";
     }
 });
+
